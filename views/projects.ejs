@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="container"> 
+        <% if(locals.projectsList) { 
+            for(var i = 0; i < projectsList.title.length; i++) {
+                if(!projectsList.today[i]) {%>
+                    <div class="item"> 
+                        <h3><%= projectsList.title[i] %></h3>
+                            <p class="cutoff-text"><%= projectsList.event[i] %></p>
+                            <a href="task/details/<%= projectsList.title[i] %>" class="">See more</a>
+                    </div>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>   
+
+    <div class="container">
+        <form action="/submit" method="POST">
+            <input class="add p" type="submit" value="+">
+        </form>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+
+</body>
+
+</html>
